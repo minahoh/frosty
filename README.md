@@ -1,0 +1,29 @@
+# frosty
+
+Author: Minah Oh
+Date: 04/27/2020
+Program Description:By using multigrid, this program solves the matrix 
+system Ax=b arising from the Fourier-FEMs applied to the H(div) problem
+on an axisymmetric domain for Fourier modes not equal to zero.
+
+Details can be found in the following paper:
+   https://doi.org/10.1016/j.jmaa.2020.124209
+
+ How to run main.m: 
+
+Input: 
+ 1. Make mesh1.mat, mesh2.mat, ... , through the final mesh corresponding to
+ your domain that contains variables [p,e,t,BdyEdges,new_ele]
+  (1) p,e,t has the same format as those created by using Matlab's "initmesh"
+  (2) BdyEdges is a vector of length the same as the number of edges in the
+      mesh. If the i-th edge is on the boundary then BdyEdges(i)=1 and zero
+      otherwise.
+  (3) new_ele is a matrix of size Number of Elements by 3. The i-th row of
+      new_ele saves the three edge numbers that makes the i-th triangle.
+ 2. Save RHS_r.m, RHS_theta.m, RHS_z.m where 
+ F(r,z)=(RHS_r(r,z), RHS_theta(r,z), RHS_z(r,z)) is the input function
+ 3. n: Fourier_mode of interest not equal to zero.
+ 4. mesh_level: The final mesh level to solve the Ax=b system.
+
+ Output: The soltuion vector x to Ax=b. (x=main(mesh_level,n))
+
